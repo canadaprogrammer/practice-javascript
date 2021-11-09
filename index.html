@@ -5,15 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practice JavaScript</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="app.js"></script>
-</head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- <script defer src="/js/convert_text.js"></script> -->
 <body>
-  <div id="convert_text_to_html">
+  <section id="convert_text_to_html">
     <label for"input_text">Input Text</label>
     <textarea name="input_text" id="input_text" cols="30" rows="10"></textarea>
     <button onclick="convert()">Convert</button>
     <div id="output_html"></div>
-  </div>
+  </section>
+  <section id="gsap_typing_animation">
+    <h1>
+      <span class="box"></span>
+      <span class="hi">Hi, I'm</span>
+      <span class="text"></span>
+      <span class="cursor">_</span>
+
+    </h1>
+  </section>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+  <script defer src="/js/gsap_typing.js"></script>
+</head>
 </body>
 </html>
