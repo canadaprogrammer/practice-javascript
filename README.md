@@ -54,3 +54,57 @@
     tl.seek(3); // jump to 3 seconds in
     tl.progress(0.5); // halfway through
     ```
+
+## GSAP Scroll Trigger Plugin
+
+- When using `pin`, `end: '+=500'` is better to control than `end: 'top 25%'`
+
+- ```js
+  gsap.to('.red-box', {
+    scrollTrigger: {
+      trigger: '.red-box',
+      start: 'top 75%', // when the top of the trigger hits the 75% of the viewport
+      end: 'top 25%', // when the top of the trigger hits the 25% of the viewport
+      end: '+=500', // end after scrolling 500px beyond the start
+      scrub: 0.6,
+      markers: true, // adds markers that are helpful during development/troubleshooting
+      // pin: true // pin the trigger element while active
+    },
+    x: 700,
+    rotation: 360,
+    transformOrigin: 'center center',
+    ease: 'Power2.easeInOut',
+  });
+  ```
+
+- ```js
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.red-box',
+      start: 'top 75%', // when the top of the trigger hits the 75% of the viewport
+      end: 'top 25%', // when the top of the trigger hits the 25% of the viewport
+      end: '+=500', // end after scrolling 500px beyond the start
+      scrub: 0.6,
+      markers: true, // adds markers that are helpful during development/troubleshooting
+      // pin: true // pin the trigger element while active
+      snap: {
+        snapTo: 'labels',
+        duration: { min: 0.2, max: 3 },
+        delay: 0.2,
+        ease: 'power1.inOut',
+      },
+    },
+    // x: 700,
+    // rotation: 360,
+    // transformOrigin: 'center center',
+    // ease: 'Power2.easeInOut',
+  });
+
+  tl.addLabel('start') // add label for snap
+    .to('.red-box', { x: 700 }) // animate x:0 to x:700
+    .addLabel('rotate')
+    .from('.red-box', { rotate: 360 }) // animate from rotate:360 to rotate:0
+    .addLabel('color')
+    .to('.red-box', { background: 'blue' }) // animate background:'red' to background:'blue'
+    .addLabel('end');
+  ```
